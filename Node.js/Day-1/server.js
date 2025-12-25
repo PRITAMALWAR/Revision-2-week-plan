@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-// middleware to parse JSON
+//middleware to parse json
 app.use(express.json());
 
 let tasks = [];
@@ -43,7 +43,7 @@ app.get('/tasks/:id', (req, res) => {
   const task = tasks.find(t => t.id === id);
 
   if (!task) {
-    return res.status(404).json({ error: 'Task not found' });
+    return res.status(404).json({ error: 'task not found' });
   }
 
   res.status(200).json(task);
@@ -88,5 +88,5 @@ app.delete('/tasks/:id', (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`server started on port ${PORT}`);
 });
