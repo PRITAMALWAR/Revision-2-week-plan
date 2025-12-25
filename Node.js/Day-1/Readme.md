@@ -24,10 +24,10 @@ Ex. 200 ok, 201 Created
 
 300 = Redirection
 
-400 → client side error
+400 = client side error
 Ex. =  400 Bad Request, 404 Not Found
 
-500 → server side error
+500 = server side error
 Ex =  500 internal server erro
 
 
