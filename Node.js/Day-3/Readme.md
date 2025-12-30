@@ -1,6 +1,6 @@
 
 
-What is JWT (JSON Web Token)? Explain its structure (header, payload, signature).**
+What is JWT (JSON Web Token)? Explain its structure (header, payload, signature).
 
 ans.
 
