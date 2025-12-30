@@ -33,8 +33,8 @@ where should you store JWTs in the client? (localStorage vs cookies vs memory)
 
 ans.
 localStorage – easy but vulnerable to XSS
-cookies – safe with HttpOnly
-memory – safe but lost on refresh
+cookies-safe with HttpOnly
+memory-safe but lost on refresh
 
 
 What is the difference between access tokens and refresh tokens?
