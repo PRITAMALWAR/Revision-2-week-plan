@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+button {
+  margin-bottom: 15px;
+}
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-success {
+  background-color: green;
+}
+
+.alert-error {
+  background-color: red;
+}
+
+.alert-warning {
+  background-color: orange;
+}
+
+.alert-info {
+  background-color: blue;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
