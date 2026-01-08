@@ -1,6 +1,5 @@
 async function getUserPostAndComments() {
   try {
-    //  fetch user data
     const userResponse = await fetch(
       "https://jsonplaceholder.typicode.com/users/1"
     );
