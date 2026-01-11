@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sortable TableBeginner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 400px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sorted-asc::after {
+      content: " (asc)";
+      font-size: 12px;
+    }
+
+    th.sorted-desc::after {
+      content: " (desc)";
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Sortable Table</h2>
+
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th data-key="name">Name</th>
+        <th data-key="age">Age</th>
+        <th data-key="salary">Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    // Data
+    const tableData = [
+      { name: 'John', age: 25, salary: 50000 },
+      { name: 'Alice', age: 30, salary: 75000 },
+      { name: 'Bob', age: 22, salary: 45000 },
+      { name: 'Charlie', age: 35, salary: 90000 }
+    ];
+
+    const tbody = document.querySelector('#myTable tbody');
+    const headers = document.querySelectorAll('#myTable th');
+
+    let sortOrder = {};
+
+    function renderTable(data) {
+      tbody.innerHTML = ''; 
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.name}</td>
+          <td>${row.age}</td>
+          <td>${row.salary}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    renderTable(tableData);
+
+    function sortTable(key) {
+      sortOrder[key] = sortOrder[key] === 'asc' ? 'desc' : 'asc';
+
+      // Sort data
+      const sortedData = [...tableData].sort((a, b) => {
+        let valA = a[key];
+        let valB = b[key];
+
+        if (typeof valA === 'string') {
+          valA = valA.toLowerCase();
+          valB = valB.toLowerCase();
+        }
+
+        if (valA > valB) return sortOrder[key] === 'asc' ? 1 : -1;
+        if (valA < valB) return sortOrder[key] === 'asc' ? -1 : 1;
+        return 0;
+      });
+
+      headers.forEach(h => {
+        h.classList.remove('sorted-asc', 'sorted-desc');
+        if (h.dataset.key === key) {
+          h.classList.add(sortOrder[key] === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
+      });
+
+      renderTable(sortedData);
+    }
+
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        sortTable(header.dataset.key);
+      });
+    });
+
+  </script>
+
+</body>
+</html>
