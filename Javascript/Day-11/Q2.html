@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accordion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .accordion {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      padding: 15px;
+      background: #f5f5f5;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .accordion-header:hover {
+      background: #eaeaea;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #fff;
+    }
+
+    .accordion-content p {
+      padding: 15px;
+      margin: 0;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Accordion</h1>
+
+  <div class="accordion" id="accordion"></div>
+
+  <script>
+    const sections = [
+      { title: 'Section 1', content: 'Content for section 1. This is some detailed information.' },
+      { title: 'Section 2', content: 'Content for section 2. This is some detailed information.' },
+      { title: 'Section 3', content: 'Content for section 3. This is some detailed information.' }
+    ];
+
+    const accordion = document.getElementById("accordion");
+
+    function renderAccordion() {
+      sections.forEach((section, index) => {
+        const item = document.createElement("div");
+        item.className = "accordion-item";
+
+        const header = document.createElement("div");
+        header.className = "accordion-header";
+        header.textContent = section.title;
+
+        const content = document.createElement("div");
+        content.className = "accordion-content";
+        content.innerHTML = `<p>${section.content}</p>`;
+
+        header.addEventListener("click", () => toggleAccordion(index));
+
+        item.appendChild(header);
+        item.appendChild(content);
+        accordion.appendChild(item);
+      });
+    }
+
+    function toggleAccordion(activeIndex) {
+      const items = document.querySelectorAll(".accordion-item");
+
+      items.forEach((item, index) => {
+        if (index === activeIndex) {
+          item.classList.toggle("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+
+    renderAccordion();
+  </script>
+
+</body>
+</html>
