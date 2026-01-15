@@ -1,0 +1,22 @@
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #ffcc00;
+  color: #333;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.banner.visible {
+  transform: translateY(0);
+}
+
+.banner.hidden {
+  transform: translateY(-100%);
+}
